@@ -1,0 +1,83 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+library(pryr)
+```
+
+# daTrimmer
+
+`daTrimmer` is a lightweight toolkit to trim a (potentially big) R object without
+breaking the results of a given function call, where the (trimmed) R object
+is given as argument.
+
+The `trim` function is the bread and butter of `daTrimmer`. It seeks to reduce
+the size of an R object by recursively removing elements from the object 
+one-by-one. It does so in a 'greedy' fashion - it constantly tries to 
+remove the element that uses the most memory. 
+
+The trimming process is constrained by a reference function call. The trimming 
+procedure will not allow elements to be removed from the object, that will 
+cause results from the function call to diverge from the original results of 
+the function call.
+
+## Installation
+
+`daTrimmer` can be installed with `install.packages('daTrimmer')`. 
+
+## Workflow Example
+
+Get ready by loading the package.
+
+```{r}
+library(daTrimmer)
+```
+
+Train a model on the famous `mtcars` data set. 
+
+```{r}
+# load training data.
+trn <- datasets::mtcars
+
+# estimate model.
+mdl <- lm(mpg ~ ., data = trn)
+```
+
+I want to trim the model object `mdl` as possible without affecting the predictions,
+computed with function `predict()`, for the resulting model. 
+
+The trimming is then simply conducted by invoking: 
+
+```{r}
+mdl_trim <- trim(obj = mdl,
+                 obj_arg_name = "object",
+                 fun = predict,
+                 newdata = trn)
+```
+
+And that's it!
+
+Note, that I provide the `trim` function with the extra argument `newdata`, that
+is passed to the function call with `fun`. This means, that the trimming is 
+constrained by, that the results of 'fun' (=`predict`) _MUST_ be exactly the same
+on these data before and after the trimming.
+
+The trimmed model object now measures `r pf_obj_size(object_size(mdl_trim))`. The original 
+object measured `r pf_obj_size(object_size(mdl))`.
+
+For more information about how to use `daTrimmer`, please take a look at the
+vignette:
+
+```{r, eval = FALSE}
+vignettes("daTrimmer")
+```
+
+Enjoy `daTrimmer`! :)

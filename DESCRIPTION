@@ -1,0 +1,23 @@
+Package: daTrimmer
+Title: Trim R Object
+Version: 0.6.4
+Authors@R: 
+    person(given = "Dataanalyse",
+           family = "UFST",
+           role = c("aut", "cre"),
+           email = "dataanalyse@ufst.dk")
+Description: A lightweight toolkit to 'trim' an R object.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
+Imports: 
+    data.table,
+    crayon,
+    cli,
+    pryr
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr

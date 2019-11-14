@@ -1,7 +1,7 @@
 library(testthat)
-library(daTrimmer)
+library(trimmer)
 library(pryr)
 library(stats)
 library(data.table)
 
-test_check("daTrimmer")
+test_check("trimmer")

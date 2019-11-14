@@ -1,5 +1,5 @@
 ---
-title: "daTrimmer"
+title: "trimmer"
 author: "Lars Kjeldgaard"
 output: rmarkdown::html_vignette
 date: "`r Sys.Date()`"
@@ -17,11 +17,13 @@ knitr::opts_chunk$set(
 library(pryr)
 ```
 
-`daTrimmer` is a lightweight toolkit to trim a (potentially big) R object without
+`trimmer` 0.7.0 is now available on CRAN. 
+
+`trimmer` is a lightweight toolkit to trim a (potentially big) R object without
 breaking the results of a given function call, where the (trimmed) R object
 is given as argument.
 
-The `trim` function is the bread and butter of `daTrimmer`. It seeks to reduce
+The `trim` function is the bread and butter of `trimmer`. It seeks to reduce
 the size of an R object by recursively removing elements from the object 
 one-by-one. It does so in a 'greedy' fashion - it constantly tries to 
 remove the element that uses the most memory. 
@@ -43,7 +45,17 @@ new observations - and _nothing_ else!
 
 ## Installation
 
-`daTrimmer` can be installed with `install.packages('daTrimmer')`. 
+Install the development version of `trimmer` with:
+
+```{r install_github, eval = FALSE}
+remotes::install_github("smaakage85/trimmer")
+```
+
+Or install the version released on CRAN: 
+
+```{r install_cran, eval = FALSE}
+install.packages("trimmer")
+```
 
 ## Trimming Process
 
@@ -62,7 +74,7 @@ elements can be removed without results from function call diverge.
 Get ready by loading the package.
 
 ```{r}
-library(daTrimmer)
+library(trimmer)
 ```
 
 Train a model on the famous `mtcars` data set.
@@ -97,7 +109,7 @@ on these data before and after the trimming.
 The trimmed model object now measures `r pf_obj_size(object_size(mdl_trim))`. The original 
 object measured `r pf_obj_size(object_size(mdl))`.
 
-### Set Target Size
+## Set Target Size
 
 If you just want the object size to be below some threshold, you can set that
 as a criterion. The 'trimming' process will continue no further, when this 
@@ -117,9 +129,9 @@ object measured `r pf_obj_size(object_size(mdl))`.
 
 ## Other Applications
 
-`daTrimmer` is compatible with all R objects, that inherit from the `list`
+`trimmer` is compatible with all R objects, that inherit from the `list`
 class - not just R model objects - and all kinds of functions - not just the
-`predict function`. Hence `daTrimmer` is quite a flexible tool.
+`predict function`. Hence `trimmer` is quite a flexible tool.
 
 To illustrate I will trim the same object but under the constraint, that the
 results from the `summary()` function must be preserved.
@@ -139,4 +151,4 @@ You can choose whether or not to tolerate warnings from reference function calls
 
 I would like to extend the framework to also support parallellization.
 
-That is it, I hope, that you will enjoy the `daTrimmer` package :)
+That is it, I hope, that you will enjoy the `trimmer` package :)

@@ -13,13 +13,15 @@ knitr::opts_chunk$set(
 library(pryr)
 ```
 
-# daTrimmer
+# trimmer <img src="man/figures/hex_trimmer.png" align="right" height=140/>
+[![Travis-CI Build Status](https://travis-ci.org/smaakage85/trimmer.svg?branch=master)](https://travis-ci.org/smaakage85/trimmer)
+[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/trimmer)](https://CRAN.R-project.org/package=trimmer) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/trimmer)](https://CRAN.R-project.org/package=trimmer)
 
-`daTrimmer` is a lightweight toolkit to trim a (potentially big) R object without
+`trimmer` is a lightweight toolkit to trim a (potentially big) R object without
 breaking the results of a given function call, where the (trimmed) R object
 is given as argument.
 
-The `trim` function is the bread and butter of `daTrimmer`. It seeks to reduce
+The `trim` function is the bread and butter of `trimmer`. It seeks to reduce
 the size of an R object by recursively removing elements from the object 
 one-by-one. It does so in a 'greedy' fashion - it constantly tries to 
 remove the element that uses the most memory. 
@@ -31,14 +33,24 @@ the function call.
 
 ## Installation
 
-`daTrimmer` can be installed with `install.packages('daTrimmer')`. 
+Install the development version of `trimmer` with:
+
+```{r install_github, eval = FALSE}
+remotes::install_github("smaakage85/trimmer")
+```
+
+Or install the version released on CRAN: 
+
+```{r install_cran, eval = FALSE}
+install.packages("trimmer")
+```
 
 ## Workflow Example
 
 Get ready by loading the package.
 
 ```{r}
-library(daTrimmer)
+library(trimmer)
 ```
 
 Train a model on the famous `mtcars` data set. 
@@ -73,11 +85,22 @@ on these data before and after the trimming.
 The trimmed model object now measures `r pf_obj_size(object_size(mdl_trim))`. The original 
 object measured `r pf_obj_size(object_size(mdl))`.
 
-For more information about how to use `daTrimmer`, please take a look at the
+For more information about how to use `trimmer`, please take a look at the
 vignette:
 
 ```{r, eval = FALSE}
-vignettes("daTrimmer")
+vignettes("trimmer")
 ```
 
-Enjoy `daTrimmer`! :)
+## Contact
+
+I hope, that you will find `trimmer` useful.
+
+Please direct any questions and feedbacks to [me](mailto:lars_kjeldgaard@hotmail.com)!
+
+If you want to contribute, open a [PR](https://github.com/smaakage85/trimmer/pulls).
+
+If you encounter a bug or want to suggest an enhancement, please [open an issue](https://github.com/smaakage85/trimmer/issues).
+
+Best, 
+smaakagen

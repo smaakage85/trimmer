@@ -1,12 +1,14 @@
-Package: daTrimmer
-Title: Trim R Object
-Version: 0.6.4
+Package: trimmer
+Title: Trim an Object
+Version: 0.7.0
 Authors@R: 
-    person(given = "Dataanalyse",
-           family = "UFST",
+    person("Lars",
+           "Kjeldgaard",
            role = c("aut", "cre"),
-           email = "dataanalyse@ufst.dk")
-Description: A lightweight toolkit to 'trim' an R object.
+           email = "lars_kjeldgaard@hotmail.com")
+Description: A lightweight toolkit to trim an object without breaking the 
+    results of a given function call, where the (trimmed) object is given as
+    argument.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

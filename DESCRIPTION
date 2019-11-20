@@ -1,14 +1,18 @@
 Package: trimmer
 Title: Trim an Object
-Version: 0.7.1
+Version: 0.7.2
 Authors@R: 
     person("Lars",
            "Kjeldgaard",
            role = c("aut", "cre"),
            email = "lars_kjeldgaard@hotmail.com")
-Description: A lightweight toolkit to trim an object without breaking the 
-    results of a given function call, where the (trimmed) object is given as
-    argument.
+Description: A lightweight toolkit to reduce the size of a 'list' object. The
+   object is minimized by recursively removing elements from the object 
+   one-by-one. The process is constrained by a reference function call
+   specified by the user, where the target object is given as an argument. 
+   The procedure will not allow elements to be removed from the object, that 
+   will cause results from the function call to diverge from the function 
+   call with the original object.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

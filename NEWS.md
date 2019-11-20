@@ -1,3 +1,7 @@
+# trimmer 0.7.2
+
+* Elaborated on description field in DESCRIPTION
+
 # trimmer 0.7.1
 
 * Fixed vignette.

@@ -1,3 +1,7 @@
+# trimmer 0.7.3
+
+* Fixed License.
+
 # trimmer 0.7.2
 
 * Elaborated on description field in DESCRIPTION

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 library(pryr)
 ```
 
-`trimmer` 0.7.2 is now available on CRAN. 
+`trimmer` 0.7.3 is now available on CRAN. 
 
 `trimmer` is a lightweight toolkit to trim a (potentially big) R object without
 breaking the results of a given function call, where the (trimmed) R object

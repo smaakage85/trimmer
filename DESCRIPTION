@@ -1,12 +1,12 @@
 Package: trimmer
 Title: Trim an Object
-Version: 0.7.3
+Version: 0.7.4
 Authors@R: 
     person("Lars",
            "Kjeldgaard",
            role = c("aut", "cre"),
            email = "lars_kjeldgaard@hotmail.com")
-Description: A lightweight toolkit to reduce the size of a 'list' object. The
+Description: A lightweight toolkit to reduce the size of a list object. The
     object is minimized by recursively removing elements from the object 
     one-by-one. The process is constrained by a reference function call
     specified by the user, where the target object is given as an argument. 

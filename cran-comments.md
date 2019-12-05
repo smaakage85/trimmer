@@ -1,6 +1,6 @@
 This is a resubmission.
 
-I have updated LICENSE files.
+I have removed '' around "list" in DESCRIPTION description.
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes

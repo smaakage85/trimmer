@@ -1,3 +1,7 @@
+# trimmer 0.7.4
+
+* Nothing really, just trying to please CRAN.
+
 # trimmer 0.7.3
 
 * Fixed License.

@@ -43,17 +43,7 @@ trim <- function(obj,
                  tolerate_warnings = FALSE,
                  verbose = TRUE,
                  ...) {
-  
-  # treat warnings as errors (warn = 2), if warnings are not tolerated. 
-  # save existing options.
-  opts <- options()
-  if (!tolerate_warnings) {
-    options(warn = 2)
-  } else {
-    options(warn = 0)
-  }
-  on.exit(options(opts))
-  
+
   # convert from MB to B.
   size_target <- size_target * 1e06
   
@@ -81,10 +71,11 @@ trim <- function(obj,
   results_init <- get_results_for_object(obj = obj,
                                          obj_arg_name = obj_arg_name,
                                          fun = fun,
+                                         tolerate_warnings = tolerate_warnings,
                                          ...) 
   
   # check initial results.
-  check_initial_results(results_init)
+  check_initial_results(results_init, tolerate_warnings)
   
   # prepare data.table with candidates for elimination. Initially one for each 
   # entry in root of list. 'i1' stands for 'index 1' - indices of all list 
@@ -117,6 +108,7 @@ trim <- function(obj,
                                           obj_arg_name = obj_arg_name,
                                           results_init = results_init, 
                                           fun = fun, 
+                                          tolerate_warnings = tolerate_warnings,
                                           ...) 
     
     # update candidates depending on results.
@@ -147,8 +139,6 @@ trim <- function(obj,
     
   }
   
-  # reset options.
-  options(opts)
   # print service message regarding target size criterion.
   if (size_target > 0 && size > size_target) {
     warning("Target size could not be achieved.")

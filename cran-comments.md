@@ -1,6 +1,7 @@
 This is a resubmission.
 
-I have removed '' around "list" in DESCRIPTION description.
+I do not set "options(warn = x)" anymore. I handle warnings with tryCatch 
+in stead.
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes

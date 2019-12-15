@@ -14,7 +14,7 @@ test_that("Expected results from main function", {
   # NOTE: pryr::object_size() seems to behave crazy here for some reason, using object.size()
   # in stead.
   # try to trim object.
-  res <- trim(obj = mdl, obj_arg_name = "object", fun = predict, size_target = 0, tolerate_warnings = FALSE, newdata = trn, verbose = FALSE)
+  suppressWarnings(res <- trim(obj = mdl, obj_arg_name = "object", fun = predict, size_target = 0, tolerate_warnings = TRUE, newdata = trn, verbose = FALSE))
   expect_is(res, "lm")
   expect_true(object.size(res) < object.size(mdl))
   

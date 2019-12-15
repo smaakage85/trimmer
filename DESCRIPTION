@@ -1,6 +1,6 @@
 Package: trimmer
 Title: Trim an Object
-Version: 0.7.4
+Version: 0.7.5
 Authors@R: 
     person("Lars",
            "Kjeldgaard",

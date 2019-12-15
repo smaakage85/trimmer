@@ -9,7 +9,11 @@ order_after_size <- function(dt) {
 #' @inheritParams trim
 #' 
 #' @return results from function call.
-get_results_for_object <- function(obj, obj_arg_name, fun, ...) {
+get_results_for_object <- function(obj, 
+                                   obj_arg_name, 
+                                   fun, 
+                                   ...,
+                                   tolerate_warnings = TRUE) {
   args_list <- list(...)
   obj_list <- list(obj)
   # set name of object arg if provided.
@@ -17,16 +21,30 @@ get_results_for_object <- function(obj, obj_arg_name, fun, ...) {
     names(obj_list) <- obj_arg_name
   }
   args_list <- append(obj_list, args_list)
-  tryCatch(do.call(fun, args_list),
-           error = function(e) {e})
+  if (tolerate_warnings) {
+    res <- tryCatch(do.call(fun, args_list),
+                    error = function(e) {e})
+  } else {
+    res <- tryCatch(do.call(fun, args_list),
+                    error = function(e) {e},
+                    warnings = function(w) {w})
+  }
+  res
 }
 
-check_initial_results <- function(results_init) {
+check_initial_results <- function(results_init, tolerate_warnings) {
   
   # hard stop if function call failed.
   if (inherits(results_init, "error")) {
     stop("Reference function call failed. Check error message below. \n",
          results_init)
+  }
+  
+  # hard stop if function call failed.
+  if (!tolerate_warnings && inherits(results_init, "warning")) {
+    stop("Reference function call resulted in warning, which is not allowed when ",
+    "tolerate_warnings is set to FALSE. Check warning message below. \n",
+    results_init)
   }
   
   # invisible return.

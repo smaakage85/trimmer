@@ -4,7 +4,8 @@
 \alias{get_results_for_object}
 \title{Compute Results From Function Call with Object as Argument}
 \usage{
-get_results_for_object(obj, obj_arg_name, fun, ...)
+get_results_for_object(obj, obj_arg_name, fun, ...,
+  tolerate_warnings = TRUE)
 }
 \arguments{
 \item{obj}{\code{list} R object to be trimmed. _MUST_ inherit from the
@@ -18,6 +19,9 @@ the function assumes, that the 'obj' matches the first parameter of 'fun'.}
 invoked with 'obj' both before and after trimming.}
 
 \item{...}{other (named) arguments for 'fun'.}
+
+\item{tolerate_warnings}{\code{logical} tolerate warnings (=TRUE) Or
+not (=FALSE) from function call results?}
 }
 \value{
 results from function call.

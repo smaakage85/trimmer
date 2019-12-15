@@ -1,3 +1,7 @@
+# trimmer 0.7.5
+
+* Do not set "options(warn = x)". Handle with 'tryCatch' only.
+
 # trimmer 0.7.4
 
 * Nothing really, just trying to please CRAN.

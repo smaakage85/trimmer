@@ -71,19 +71,9 @@ check_inputs <- function(obj, obj_arg_name, fun, ignore_warnings = TRUE) {
   
   if (!is.null(obj_arg_name)) {
     if (!obj_arg_name %in% names(formals(fun))) {
-      msg <- "'obj_arg_name' does not match any named arg for 'fun'."
-      if (ignore_warnings) {
-        warning(msg)
-      } else {
-        msg(msg)
-      }
-    }
-  } else {
-    msg <- "No 'obj_arg_name' provided. Assumes that object matches first argument of 'fun'."
-    if (ignore_warnings) {
-      warning(msg)
+      warning("'obj_arg_name' does not match any named arg for 'fun'.")
     } else {
-      msg(msg)
+      warning("No 'obj_arg_name' provided. Assumes that object matches first argument of 'fun'.")
     }
   }
   

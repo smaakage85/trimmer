@@ -1,7 +1,6 @@
-This is a resubmission.
+This is a bugfix.
 
-I do not set "options(warn = x)" anymore. I handle warnings with tryCatch 
-in stead.
+Removed reference to object, that did not exist in environment.
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes

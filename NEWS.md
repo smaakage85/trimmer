@@ -1,3 +1,7 @@
+# trimmer 0.7.6
+
+* Minimal bugfix.
+
 # trimmer 0.7.5
 
 * Do not set "options(warn = x)". Handle with 'tryCatch' only.

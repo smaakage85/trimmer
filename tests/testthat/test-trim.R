@@ -54,3 +54,61 @@ test_that("expected behavior if target size has been set and cannot be achieved"
   expect_identical(p_init, p_new)
   
 })
+
+context("'dont_touch'") 
+
+test_that("single entry, shallow", {
+  
+  # benchmark.
+  res <- trim(obj = mdl, 
+              obj_arg_name = "object", 
+              fun = predict, 
+              size_target = 0, 
+              tolerate_warnings = FALSE, 
+              newdata = trn, 
+              verbose = FALSE,
+              dont_touch = list())
+  expect_true(is.null(res$model))
+  expect_true(is.null(res$qr$tol))
+  
+  res <- trim(obj = mdl, 
+              obj_arg_name = "object", 
+              fun = predict, 
+              size_target = 0, 
+              tolerate_warnings = FALSE, 
+              newdata = trn, 
+              verbose = FALSE,
+              dont_touch = list(c("model")))
+  expect_true(!is.null(res$model))
+  
+})
+
+test_that("single entry, deep", {
+  
+  res <- trim(obj = mdl, 
+              obj_arg_name = "object", 
+              fun = predict, 
+              size_target = 0, 
+              tolerate_warnings = FALSE, 
+              newdata = trn, 
+              verbose = FALSE,
+              dont_touch = list(c("qr", "tol")))
+  expect_true(!is.null(res$qr$tol))
+  
+})
+
+test_that("multiple entries", {
+  
+  res <- trim(obj = mdl, 
+              obj_arg_name = "object", 
+              fun = predict, 
+              size_target = 0, 
+              tolerate_warnings = FALSE, 
+              newdata = trn, 
+              verbose = FALSE,
+              dont_touch = list(c("model"), c("qr", "tol")))
+  expect_true(!is.null(res$model))
+  expect_true(!is.null(res$qr$tol))
+  
+})
+

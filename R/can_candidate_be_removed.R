@@ -4,6 +4,7 @@ can_candidate_be_removed <- function(obj,
                                      results_init, 
                                      fun,
                                      dont_touch,
+                                     tolerate_warnings,
                                      ...) {
   
   # check if 'idx' matches something that must not be removed.

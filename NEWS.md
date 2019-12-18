@@ -1,3 +1,7 @@
+# trimmer 0.8.0
+
+* New version with 'dont_touch' functionality, that enables the user to choose, what elements that must NOT be removed with `trim()`.
+
 # trimmer 0.7.7
 
 * A bugfix for my bugfix.

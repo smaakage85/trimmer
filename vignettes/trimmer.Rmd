@@ -147,6 +147,8 @@ mdl_trim <- trim(obj = mdl,
 
 You can choose whether or not to tolerate warnings from reference function calls  with argument `tolerate_warnings`. 
 
+You can also choose, that certain elements _MUST NOT_ be removed in the trimming process. Do this with the `dont_touch` argument.
+
 ## Future Development 
 
 I would like to extend the framework to also support parallellization.

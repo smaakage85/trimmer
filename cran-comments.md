@@ -1,4 +1,5 @@
-This is a bugfix for my previous bugfix attempt :S
+This is a new version. It supports 'dont_touch' functionality, that enables
+the user to choose, what elements that must NOT be removed with `trim()`.
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes

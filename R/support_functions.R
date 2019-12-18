@@ -27,7 +27,7 @@ get_results_for_object <- function(obj,
   } else {
     res <- tryCatch(do.call(fun, args_list),
                     error = function(e) {e},
-                    warnings = function(w) {w})
+                    warning = function(w) {w})
   }
   res
 }
@@ -52,7 +52,7 @@ check_initial_results <- function(results_init, tolerate_warnings) {
   
 }
 
-check_inputs <- function(obj, obj_arg_name, fun, dont_touch, ignore_warnings = TRUE) {
+check_inputs <- function(obj, obj_arg_name, fun, dont_touch) {
   
   # check 'dont_touch'.
   if (!is.list(dont_touch)) {
@@ -79,12 +79,6 @@ check_inputs <- function(obj, obj_arg_name, fun, dont_touch, ignore_warnings = T
     if (!is.character(obj_arg_name)) {
       stop("'obj_arg_name' must be of type 'character'.")
     }
-  }
-  
-  if (!is.null(obj_arg_name)) {
-    if (!obj_arg_name %in% names(formals(fun))) {
-      warning("'obj_arg_name' does not match any named arg for 'fun'.")
-      }
   } else {
     warning("No 'obj_arg_name' provided. Assumes that object matches first argument of 'fun'.")
   }

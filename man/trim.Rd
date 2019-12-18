@@ -5,7 +5,8 @@
 \title{Trim an R Object}
 \usage{
 trim(obj, obj_arg_name = NULL, fun = predict, size_target = 0,
-  tolerate_warnings = FALSE, verbose = TRUE, ...)
+  tolerate_warnings = FALSE, verbose = TRUE, dont_touch = list(),
+  ...)
 }
 \arguments{
 \item{obj}{\code{list} R object to be trimmed. _MUST_ inherit from the
@@ -28,6 +29,9 @@ not (=FALSE) from function call results?}
 
 \item{verbose}{\code{logical} print messages?}
 
+\item{dont_touch}{\code{list} list with name indices of elements, that must 
+not be removed from object by trimming procedure.}
+
 \item{...}{other (named) arguments for 'fun'.}
 }
 \description{
@@ -42,5 +46,6 @@ trn <- datasets::mtcars
 
 # estimate model.
 mdl <- lm(mpg ~ ., data = trn)
-mdl_slim <- trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn)
+trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn)
+trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn, dont_touch = list(c("model"), c("qr","tol")))
 }

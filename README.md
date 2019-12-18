@@ -67,47 +67,47 @@ mdl_trim <- trim(obj = mdl,
                  newdata = trn)
 #> * Initial object size: 22.22 kB
 #> Begin trimming object.
-#> ~ Trying to remove element [[c(12)]], element size = 14.05 kB
+#> ~ Trying to remove element [[c('model')]], element size = 14.05 kB
 #> v Element removed.
 #> * Object size after removal: 18.19 kB [v4.03 kB]
-#> ~ Trying to remove element [[c(7)]], element size = 7.79 kB
-#> x Element could not be removed without breaking results.
-#> ~ Trying to remove element [[c(11)]], element size = 7.63 kB
-#> x Element could not be removed without breaking results.
-#> ~ Trying to remove element [[c(7,1)]], element size = 6.66 kB
+#> ~ Trying to remove element [[c('qr')]], element size = 7.79 kB
+#> x Element could not be removed.
+#> ~ Trying to remove element [[c('terms')]], element size = 7.63 kB
+#> x Element could not be removed.
+#> ~ Trying to remove element [[c('qr','qr')]], element size = 6.66 kB
 #> v Element removed.
 #> * Object size after removal: 14.95 kB [v7.27 kB]
-#> ~ Trying to remove element [[c(2)]], element size = 2.86 kB
+#> ~ Trying to remove element [[c('residuals')]], element size = 2.86 kB
 #> v Element removed.
 #> * Object size after removal: 14.53 kB [v7.7 kB]
-#> ~ Trying to remove element [[c(4)]], element size = 2.86 kB
+#> ~ Trying to remove element [[c('fitted.values')]], element size = 2.86 kB
 #> v Element removed.
 #> * Object size after removal: 11.66 kB [v10.56 kB]
-#> ~ Trying to remove element [[c(2)]], element size = 1.4 kB
+#> ~ Trying to remove element [[c('effects')]], element size = 1.4 kB
 #> v Element removed.
 #> * Object size after removal: 10.76 kB [v11.46 kB]
-#> ~ Trying to remove element [[c(1)]], element size = 1.09 kB
-#> x Element could not be removed without breaking results.
-#> ~ Trying to remove element [[c(7)]], element size = 728 B
+#> ~ Trying to remove element [[c('coefficients')]], element size = 1.09 kB
+#> x Element could not be removed.
+#> ~ Trying to remove element [[c('call')]], element size = 728 B
 #> v Element removed.
 #> * Object size after removal: 10.09 kB [v12.14 kB]
-#> ~ Trying to remove element [[c(6)]], element size = 208 B
+#> ~ Trying to remove element [[c('xlevels')]], element size = 208 B
 #> v Element removed.
 #> * Object size after removal: 9.85 kB [v12.38 kB]
-#> ~ Trying to remove element [[c(4,1)]], element size = 176 B
+#> ~ Trying to remove element [[c('qr','qraux')]], element size = 176 B
 #> v Element removed.
 #> * Object size after removal: 9.62 kB [v12.61 kB]
-#> ~ Trying to remove element [[c(3)]], element size = 96 B
+#> ~ Trying to remove element [[c('assign')]], element size = 96 B
 #> v Element removed.
 #> * Object size after removal: 9.46 kB [v12.76 kB]
-#> ~ Trying to remove element [[c(3,1)]], element size = 96 B
-#> x Element could not be removed without breaking results.
-#> ~ Trying to remove element [[c(2)]], element size = 56 B
-#> x Element could not be removed without breaking results.
-#> ~ Trying to remove element [[c(4)]], element size = 56 B
+#> ~ Trying to remove element [[c('qr','pivot')]], element size = 96 B
+#> x Element could not be removed.
+#> ~ Trying to remove element [[c('rank')]], element size = 56 B
+#> x Element could not be removed.
+#> ~ Trying to remove element [[c('df.residual')]], element size = 56 B
 #> v Element removed.
 #> * Object size after removal: 9.31 kB [v12.91 kB]
-#> ~ Trying to remove element [[c(3,2)]], element size = 56 B
+#> ~ Trying to remove element [[c('qr','tol')]], element size = 56 B
 #> v Element removed.
 #> * Object size after removal: 9.17 kB [v13.06 kB]
 #> Trimming completed.

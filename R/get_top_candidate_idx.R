@@ -1,5 +1,5 @@
 # get position index of top candidate.
-get_top_candidate_idx <- function(dt, verbose = TRUE) {
+get_top_candidate_idx <- function(dt, obj, verbose = TRUE) {
   
   # extract size.
   size <- dt$size
@@ -14,11 +14,15 @@ get_top_candidate_idx <- function(dt, verbose = TRUE) {
   # remove any NA's from position index.
   idx <- idx[!is.na(idx)]
   
+  # convert index to name if possible.
+  idx_name <- tryCatch(convert_idx_to_name(idx, obj),
+                  error = function(e) {idx})
+  
   if (verbose) {
-    cat_bullet("Trying to remove element [[", blue("c("),
-               blue(paste0(idx, collapse = ",")), blue(")"), "]], element size = ", 
+    cat_bullet("Trying to remove element [[", blue("c('"),
+               blue(paste0(idx_name, collapse = "','")), blue("')"), "]], element size = ", 
                blue(pf_obj_size(as.numeric(size))), sep = "", 
-               bullet = "continue",bullet_col = "gray")
+               bullet = "continue", bullet_col = "gray")
   }
   
   idx

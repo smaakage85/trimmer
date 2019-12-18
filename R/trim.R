@@ -20,6 +20,8 @@
 #' not (=FALSE) from function call results?
 #' @param verbose \code{logical} print messages?
 #' @param ... other (named) arguments for 'fun'.
+#' @param dont_touch \code{list} list with name indices of elements, that must 
+#' not be removed from object by trimming procedure.
 #'
 #' @import data.table
 #' @importFrom pryr object_size
@@ -35,13 +37,15 @@
 #' 
 #' # estimate model.
 #' mdl <- lm(mpg ~ ., data = trn)
-#' mdl_slim <- trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn)
+#' trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn)
+#' trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn, dont_touch = list(c("model"), c("qr","tol")))
 trim <- function(obj,
                  obj_arg_name = NULL,
                  fun = predict,
                  size_target = 0,
                  tolerate_warnings = FALSE,
                  verbose = TRUE,
+                 dont_touch = list(),
                  ...) {
 
   # convert from MB to B.
@@ -65,7 +69,8 @@ trim <- function(obj,
   # check inputs for function.
   check_inputs(obj = obj,
                obj_arg_name = obj_arg_name,
-               fun = fun)
+               fun = fun,
+               dont_touch = dont_touch)
   
   # get results for initial object.
   results_init <- get_results_for_object(obj = obj,
@@ -100,7 +105,7 @@ trim <- function(obj,
     cand <- cand[-1, , drop = FALSE]
     
     # get position index of top candidate.
-    cand_top_idx <- get_top_candidate_idx(cand_top, verbose = verbose)
+    cand_top_idx <- get_top_candidate_idx(cand_top, obj, verbose = verbose)
     
     # try to remove top candidate.
     remove_ok <- can_candidate_be_removed(obj = obj, 
@@ -108,6 +113,7 @@ trim <- function(obj,
                                           obj_arg_name = obj_arg_name,
                                           results_init = results_init, 
                                           fun = fun, 
+                                          dont_touch = dont_touch,
                                           tolerate_warnings = tolerate_warnings,
                                           ...) 
     
@@ -129,7 +135,7 @@ trim <- function(obj,
                                  sep = "")}
       }
     } else {
-      if (verbose) {cat_bullet("Element could not be removed without breaking results.", 
+      if (verbose) {cat_bullet("Element could not be removed.", 
                                bullet = "cross", bullet_col = "red")}
       cand_length <- get_length_candidate(obj, cand_top_idx)
       if (!is.null(cand_length)) {

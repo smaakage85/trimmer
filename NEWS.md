@@ -1,3 +1,7 @@
+# trimmer 0.7.7
+
+* A bugfix for my bugfix.
+
 # trimmer 0.7.6
 
 * Minimal bugfix.

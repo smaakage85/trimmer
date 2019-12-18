@@ -47,5 +47,6 @@ trn <- datasets::mtcars
 # estimate model.
 mdl <- lm(mpg ~ ., data = trn)
 trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn)
-trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn, dont_touch = list(c("model"), c("qr","tol")))
+trim(obj = mdl, obj_arg_name = "object", fun = predict, newdata = trn,
+dont_touch = list(c("model"), c("qr","tol")))
 }

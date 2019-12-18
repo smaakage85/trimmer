@@ -1,3 +1,7 @@
+# trimmer 0.8.1
+
+* Fix too long line in documentation for 'trim()' examples.
+
 # trimmer 0.8.0
 
 * New version with 'dont_touch' functionality, that enables the user to choose, what elements that must NOT be removed with `trim()`.

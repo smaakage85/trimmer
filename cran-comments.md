@@ -1,5 +1,6 @@
-This is a new version. It supports 'dont_touch' functionality, that enables
-the user to choose, what elements that must NOT be removed with `trim()`.
+This is a resubmission. 
+
+Fixed line in documentation for 'trim()' examples, that was too long.
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes

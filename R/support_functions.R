@@ -52,7 +52,19 @@ check_initial_results <- function(results_init, tolerate_warnings) {
   
 }
 
-check_inputs <- function(obj, obj_arg_name, fun, ignore_warnings = TRUE) {
+check_inputs <- function(obj, obj_arg_name, fun, dont_touch, ignore_warnings = TRUE) {
+  
+  # check 'dont_touch'.
+  if (!is.list(dont_touch)) {
+    stop("This function only accepts objects (`dont_touch`), that inherit from the",
+         "'list' class.")
+  }
+  
+  if (length(dont_touch) > 0) {
+    if (!all(sapply(dont_touch, is.character))) {
+      stop("elements in 'dont_touch' must be 'character'.")
+    }
+  }
   
   if (!is.list(obj)) {
     stop("This function only accepts objects (`obj`), that inherit from the",
@@ -71,10 +83,10 @@ check_inputs <- function(obj, obj_arg_name, fun, ignore_warnings = TRUE) {
   
   if (!is.null(obj_arg_name)) {
     if (!obj_arg_name %in% names(formals(fun))) {
-      warning("'obj_arg_name' does not match any named arg for 'fun'.")
-    } else {
-      warning("No 'obj_arg_name' provided. Assumes that object matches first argument of 'fun'.")
+     warning("'obj_arg_name' does not match any named arg for 'fun'.")
     }
+  } else {
+    warning("No 'obj_arg_name' provided. Assumes that object matches first argument of 'fun'.")
   }
   
   # return invisibly.
@@ -132,4 +144,9 @@ pf_obj_size <- function(x, digits = 2) {
   # convert to priend friendly string.
   paste0(c(x, unit), collapse = " ")
   
+}
+
+match_entries <- function(idx, match_against) {
+  match_length <- min(length(idx), length(match_against))
+  identical(idx[seq_len(match_length)], match_against[seq_len(match_length)])
 }
